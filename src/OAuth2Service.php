@@ -2,6 +2,7 @@
 
 namespace LaravelOAuth2Client;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\SessionManager;
@@ -55,19 +56,19 @@ class OAuth2Service
     public function callback(OAuth2CallbackRequest $request): OAuth2AccessToken
     {
         if ($request->has('denied')) {
-            throw new IdentityProviderException('OAuth2 callback: denied');
+            throw new IdentityProviderException('OAuth2 callback: denied', StatusCodeInterface::STATUS_FORBIDDEN, $request->toArray());
         }
 
         if (! $this->hasSavedState()) {
-            throw new IdentityProviderException('OAuth2 callback: state is missing');
+            throw new IdentityProviderException('OAuth2 callback: state is missing', StatusCodeInterface::STATUS_BAD_REQUEST, $request->toArray());
         }
 
         if ($this->pkceEnabled() && ! $this->hasSavedVerifier()) {
-            throw new IdentityProviderException('OAuth2 callback: verifier is missing');
+            throw new IdentityProviderException('OAuth2 callback: verifier is missing', StatusCodeInterface::STATUS_BAD_REQUEST, $request->toArray());
         }
 
         if ($request->get('state') !== $this->getSavedState()) {
-            throw new IdentityProviderException('OAuth2 callback: state mismatch');
+            throw new IdentityProviderException('OAuth2 callback: state mismatch', StatusCodeInterface::STATUS_BAD_REQUEST, $request->toArray());
         }
 
         $options = [
