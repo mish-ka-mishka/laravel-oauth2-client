@@ -52,11 +52,11 @@ class Oauth2Service
             throw new IdentityProviderException('OAuth2 callback: denied');
         }
 
-        if (!$this->hasSavedState()) {
+        if (! $this->hasSavedState()) {
             throw new IdentityProviderException('OAuth2 callback: state is missing');
         }
 
-        if ($this->pkceEnabled() && !$this->hasSavedVerifier()) {
+        if ($this->pkceEnabled() && ! $this->hasSavedVerifier()) {
             throw new IdentityProviderException('OAuth2 callback: verifier is missing');
         }
 
@@ -112,7 +112,8 @@ class Oauth2Service
         return strtolower($class);
     }
 
-    protected function getModelForToken(AccessTokenInterface $accessToken): AccessTokenInterface {
+    protected function getModelForToken(AccessTokenInterface $accessToken): AccessTokenInterface
+    {
         $model = Oauth2AccessToken::fillFromAccessToken($accessToken);
         $model->provider = $this->providerName;
 

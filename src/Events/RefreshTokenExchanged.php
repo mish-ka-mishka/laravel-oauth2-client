@@ -8,7 +8,8 @@ use League\OAuth2\Client\Token\AccessTokenInterface;
 
 class RefreshTokenExchanged
 {
-    use Dispatchable, SerializesModels;
+    use Dispatchable;
+    use SerializesModels;
 
     public AccessTokenInterface $oldToken;
     public AccessTokenInterface $newToken;
