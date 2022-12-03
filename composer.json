@@ -1,0 +1,48 @@
+{
+    "name": "mkaverin/laravel-oauth2-client",
+	"homepage": "https://github.com/mish-ka-mishka/laravel-oauth2-client",
+    "autoload": {
+        "psr-4": {
+            "LaravelOauth2Client\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelOauth2Client\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael",
+            "email": "m@kaverin.ml"
+        }
+    ],
+	"extra": {
+		"laravel": {
+			"providers": [
+                "\\Quests\\Providers\\Oauth2ServiceProvider"
+			]
+		}
+	},
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/contracts": "^8.0|^9.0",
+        "illuminate/database": "^8.0|^9.0",
+        "illuminate/http": "^8.0|^9.0",
+        "illuminate/support": "^8.0|^9.0",
+        "league/oauth2-client": "^2.6"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0|^6.23|^7.0",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+	"config": {
+		"sort-packages": true
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
