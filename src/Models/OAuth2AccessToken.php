@@ -24,6 +24,8 @@ use League\OAuth2\Client\Token\ResourceOwnerAccessTokenInterface;
  */
 class OAuth2AccessToken extends Model implements ResourceOwnerAccessTokenInterface
 {
+    protected $table = 'oauth2_access_tokens';
+
     protected $casts = [
         'values' => 'array',
         'expires_at' => 'datetime',
