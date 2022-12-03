@@ -2,6 +2,7 @@
 
 namespace LaravelOauth2Client;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\Store;
 use LaravelOauth2Client\Events\RefreshTokenExchanged;
@@ -28,7 +29,7 @@ class Oauth2Service
         $this->redirector = app('redirect');
     }
 
-    public function init(array $scope): void
+    public function init(array $scope): RedirectResponse
     {
         $url = $this->provider->getAuthorizationUrl([
             'scope' => $scope,
@@ -40,7 +41,7 @@ class Oauth2Service
             $this->saveVerifier($this->getPkceVerifier());
         }
 
-        $this->redirector->away($url);
+        return $this->redirector->away($url);
     }
 
     /**
