@@ -87,6 +87,11 @@ class OAuth2AccessToken extends Model implements ResourceOwnerAccessTokenInterfa
 
     public function getLeagueAccessToken(): AccessToken
     {
-        return new AccessToken($this->getValues());
+        return new AccessToken([
+            'access_token' => $this->access_token,
+            'refresh_token' => $this->refresh_token,
+            'resource_owner_id' => $this->resource_owner_id,
+            'expires' => $this->expires_at ? $this->expires_at->getTimestamp() : null,
+        ] + $this->values);
     }
 }
