@@ -12,6 +12,7 @@ use LaravelOAuth2Client\Events\RefreshTokenExchanged;
 use LaravelOAuth2Client\Models\OAuth2AccessToken;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Token\AccessTokenInterface;
 
 class OAuth2Service
@@ -114,7 +115,7 @@ class OAuth2Service
         return $this->provider;
     }
 
-    public function getResourceOwner(OAuth2AccessToken $token): array
+    public function getResourceOwner(OAuth2AccessToken $token): ResourceOwnerInterface
     {
         return $this->provider->getResourceOwner($token->getLeagueAccessToken());
     }
