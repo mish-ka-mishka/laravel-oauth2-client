@@ -108,6 +108,16 @@ class OAuth2Service
         return $model;
     }
 
+    public function getProvider(): AbstractProvider
+    {
+        return $this->provider;
+    }
+
+    public function getResourceOwner(OAuth2AccessToken $token): array
+    {
+        return $this->provider->getResourceOwner($token);
+    }
+
     public static function guessProviderName(AbstractProvider $provider): string
     {
         $class = get_class($provider);
