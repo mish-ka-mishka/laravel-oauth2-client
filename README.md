@@ -17,7 +17,7 @@ composer require mkaverin/laravel-oauth2-client
 Then, copy and run database migrations:
 
 ```shell
-php artisan vendor:publish --provider="LaravelOauth2Client\Providers\Oauth2ServiceProvider" --tag=migrations
+php artisan vendor:publish --provider="LaravelOAuth2Client\Providers\OAuth2ServiceProvider" --tag=migrations
 ```
 
 ```shell
@@ -31,7 +31,7 @@ If you don't use auto-discovery, add the ServiceProvider to the providers array 
 ```php
 'providers' => [
     ...
-    LaravelOauth2Client\Providers\Oauth2ServiceProvider::class,
+    LaravelOAuth2Client\Providers\OAuth2ServiceProvider::class,
 ],
 ```
 

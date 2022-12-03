@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelOauth2Client\Events;
+namespace LaravelOAuth2Client\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;

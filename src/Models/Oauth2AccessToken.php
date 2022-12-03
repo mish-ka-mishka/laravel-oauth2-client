@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelOauth2Client\Models;
+namespace LaravelOAuth2Client\Models;
 
 use App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
@@ -22,14 +22,14 @@ use League\OAuth2\Client\Token\ResourceOwnerAccessTokenInterface;
  * @property ?Carbon $updated_at
  * @property ?Carbon $deleted_at
  */
-class Oauth2AccessToken extends Model implements ResourceOwnerAccessTokenInterface
+class OAuth2AccessToken extends Model implements ResourceOwnerAccessTokenInterface
 {
     protected $casts = [
         'values' => 'array',
         'expires_at' => 'datetime',
     ];
 
-    public static function fillFromAccessToken(AccessTokenInterface $accessToken): Oauth2AccessToken
+    public static function fillFromAccessToken(AccessTokenInterface $accessToken): OAuth2AccessToken
     {
         $instance = new self();
 

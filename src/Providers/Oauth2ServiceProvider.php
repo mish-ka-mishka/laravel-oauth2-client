@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelOauth2Client\Providers;
+namespace LaravelOAuth2Client\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class Oauth2ServiceProvider extends ServiceProvider
+class OAuth2ServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if (! class_exists('CreateOauth2AccessTokensTable')) {
+        if (! class_exists('CreateOAuth2AccessTokensTable')) {
             $timestamp = date('Y_m_d_His', time());
 
             $this->publishes([

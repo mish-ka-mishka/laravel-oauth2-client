@@ -1,18 +1,18 @@
 <?php
 
-namespace LaravelOauth2Client;
+namespace LaravelOAuth2Client;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\Store;
-use LaravelOauth2Client\Events\RefreshTokenExchanged;
-use LaravelOauth2Client\Http\Requests\Oauth2CallbackRequest;
-use LaravelOauth2Client\Models\Oauth2AccessToken;
+use LaravelOAuth2Client\Events\RefreshTokenExchanged;
+use LaravelOAuth2Client\Http\Requests\OAuth2CallbackRequest;
+use LaravelOAuth2Client\Models\OAuth2AccessToken;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessTokenInterface;
 
-class Oauth2Service
+class OAuth2Service
 {
     protected AbstractProvider $provider;
     protected string $providerName;
@@ -47,7 +47,7 @@ class Oauth2Service
     /**
      * @throws IdentityProviderException
      */
-    public function callback(Oauth2CallbackRequest $request): Oauth2AccessToken
+    public function callback(OAuth2CallbackRequest $request): OAuth2AccessToken
     {
         if ($request->has('denied')) {
             throw new IdentityProviderException('OAuth2 callback: denied');
@@ -83,7 +83,7 @@ class Oauth2Service
     /**
      * @throws IdentityProviderException
      */
-    public function exchangeRefreshToken(Oauth2AccessToken $refreshableToken): Oauth2AccessToken
+    public function exchangeRefreshToken(OAuth2AccessToken $refreshableToken): OAuth2AccessToken
     {
         $accessToken = $this->provider->getAccessToken('refresh_token', [
             'refresh_token' => $refreshableToken->getRefreshToken(),
@@ -115,7 +115,7 @@ class Oauth2Service
 
     protected function getModelForToken(AccessTokenInterface $accessToken): AccessTokenInterface
     {
-        $model = Oauth2AccessToken::fillFromAccessToken($accessToken);
+        $model = OAuth2AccessToken::fillFromAccessToken($accessToken);
         $model->provider = $this->providerName;
 
         return $model;

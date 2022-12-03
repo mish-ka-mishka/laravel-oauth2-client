@@ -1,8 +1,8 @@
 <?php
-namespace LaravelOauth2Client\Tests;
+namespace LaravelOAuth2Client\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use LaravelOauth2Client\Providers\Oauth2ServiceProvider;
+use LaravelOAuth2Client\Providers\OAuth2ServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -12,7 +12,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [
-            Oauth2ServiceProvider::class,
+            OAuth2ServiceProvider::class,
         ];
     }
 }

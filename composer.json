@@ -3,12 +3,12 @@
 	"homepage": "https://github.com/mish-ka-mishka/laravel-oauth2-client",
     "autoload": {
         "psr-4": {
-            "LaravelOauth2Client\\": "src/"
+            "LaravelOAuth2Client\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LaravelOauth2Client\\Tests\\": "tests/"
+            "LaravelOAuth2Client\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -20,7 +20,7 @@
 	"extra": {
 		"laravel": {
 			"providers": [
-                "\\LaravelOauth2Client\\Providers\\Oauth2ServiceProvider"
+                "\\LaravelOAuth2Client\\Providers\\OAuth2ServiceProvider"
 			]
 		}
 	},
