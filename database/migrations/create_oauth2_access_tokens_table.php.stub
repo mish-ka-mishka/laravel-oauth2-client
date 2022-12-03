@@ -21,8 +21,8 @@ class CreateOAuth2AccessTokensTable extends Migration
             $table->string('tokenable_type')->nullable();
             $table->integer('tokenable_id')->nullable();
 
-            $table->string('access_token');
-            $table->string('refresh_token')->nullable();
+            $table->text('access_token');
+            $table->text('refresh_token')->nullable();
             $table->string('resource_owner_id')->nullable();
             $table->json('values')->nullable();
             $table->dateTime('expires_at')->nullable();
