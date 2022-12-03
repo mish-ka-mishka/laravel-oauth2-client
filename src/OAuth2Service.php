@@ -19,7 +19,7 @@ class OAuth2Service
     protected string $providerName;
 
     /**
-     * @var Store|SessionManager $session
+     * @var Store|SessionManager
      */
     protected $session;
 
