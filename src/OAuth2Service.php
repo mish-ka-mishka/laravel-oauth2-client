@@ -4,6 +4,7 @@ namespace LaravelOAuth2Client;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use Illuminate\Session\SessionManager;
 use Illuminate\Session\Store;
 use LaravelOAuth2Client\Events\RefreshTokenExchanged;
 use LaravelOAuth2Client\Http\Requests\OAuth2CallbackRequest;
@@ -17,7 +18,11 @@ class OAuth2Service
     protected AbstractProvider $provider;
     protected string $providerName;
 
-    protected Store $session;
+    /**
+     * @var Store|SessionManager $session
+     */
+    protected $session;
+
     protected Redirector $redirector;
 
     public function __construct(AbstractProvider $provider, ?string $providerName = null)
