@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
+use League\OAuth2\Client\Token\AccessToken;
 use League\OAuth2\Client\Token\AccessTokenInterface;
 use League\OAuth2\Client\Token\ResourceOwnerAccessTokenInterface;
 
@@ -82,5 +83,10 @@ class OAuth2AccessToken extends Model implements ResourceOwnerAccessTokenInterfa
     public function getResourceOwnerId(): ?string
     {
         return $this->resource_owner_id;
+    }
+
+    public function getLeagueAccessToken(): AccessToken
+    {
+        return new AccessToken($this->getValues());
     }
 }

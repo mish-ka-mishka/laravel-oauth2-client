@@ -116,7 +116,7 @@ class OAuth2Service
 
     public function getResourceOwner(OAuth2AccessToken $token): array
     {
-        return $this->provider->getResourceOwner($token);
+        return $this->provider->getResourceOwner($token->getLeagueAccessToken());
     }
 
     public static function guessProviderName(AbstractProvider $provider): string
