@@ -4,11 +4,11 @@ namespace LaravelOAuth2Client;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\SessionManager;
 use Illuminate\Session\Store;
 use LaravelOAuth2Client\Events\RefreshTokenExchanged;
-use LaravelOAuth2Client\Http\Requests\OAuth2CallbackRequest;
 use LaravelOAuth2Client\Models\OAuth2AccessToken;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
@@ -53,7 +53,7 @@ class OAuth2Service
     /**
      * @throws IdentityProviderException
      */
-    public function callback(OAuth2CallbackRequest $request): OAuth2AccessToken
+    public function callback(Request $request): OAuth2AccessToken
     {
         if ($request->has('denied')) {
             throw new IdentityProviderException('OAuth2 callback: denied', StatusCodeInterface::STATUS_FORBIDDEN, $request->toArray());
