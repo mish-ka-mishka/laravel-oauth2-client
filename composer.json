@@ -20,7 +20,7 @@
 	"extra": {
 		"laravel": {
 			"providers": [
-                "\\Quests\\Providers\\Oauth2ServiceProvider"
+                "\\LaravelOauth2Client\\Providers\\Oauth2ServiceProvider"
 			]
 		}
 	},
