@@ -122,11 +122,12 @@ class OAuth2Service
     public static function guessProviderName(AbstractProvider $provider): string
     {
         $class = get_class($provider);
+        $parts = explode('\\', $class);
 
-        $class = substr($class, strrpos($class, '\\') + 1);
-        $class = substr($class, 0, -strlen('Provider'));
+        $lastPart = array_pop($parts);
+        $lastPart = rtrim($lastPart, 'Provider');
 
-        return strtolower($class);
+        return strtolower($lastPart);
     }
 
     protected function getModelForToken(AccessTokenInterface $accessToken): AccessTokenInterface
