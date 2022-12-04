@@ -56,8 +56,8 @@ class OAuth2Service
      */
     public function callback(Request $request): OAuth2AccessToken
     {
-        if ($request->has('denied')) {
-            throw new IdentityProviderException('OAuth2 callback: denied', StatusCodeInterface::STATUS_FORBIDDEN, $request->toArray());
+        if (! $request->has('code')) {
+            throw new IdentityProviderException('OAuth2 callback: code is missing', StatusCodeInterface::STATUS_BAD_REQUEST, $request->toArray());
         }
 
         if (! $this->hasSavedState()) {
