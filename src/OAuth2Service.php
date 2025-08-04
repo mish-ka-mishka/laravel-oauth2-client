@@ -15,6 +15,8 @@ use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Token\AccessTokenInterface;
 
+use function str_ends_with;
+
 class OAuth2Service
 {
     protected AbstractProvider $provider;
@@ -126,7 +128,9 @@ class OAuth2Service
         $parts = explode('\\', $class);
 
         $lastPart = array_pop($parts);
-        $lastPart = rtrim($lastPart, 'Provider');
+        if (str_ends_with($lastPart, 'Provider')) {
+            $lastPart = substr($lastPart, 0, -8); // Remove 'Provider' (8 characters) from the end
+        }
 
         return strtolower($lastPart);
     }
