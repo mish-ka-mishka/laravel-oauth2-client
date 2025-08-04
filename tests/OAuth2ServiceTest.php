@@ -64,7 +64,11 @@ class FakeProvider extends AbstractProvider
 }
 
 // Test class without 'Provider' suffix
-class FakePr extends FakeProvider {}
+class FakePr extends FakeProvider
+{
+}
 
 // Test class with 'Provider' in the beginning of the name
-class ProviderFake extends FakeProvider {}
+class ProviderFake extends FakeProvider
+{
+}
